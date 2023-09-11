@@ -29,7 +29,7 @@ window=CreateWindow("mywin","WindowA",WS_OVERLAPPEDWINDOW | WS_MAXIMIZE | WS_CLI
 
 if(!window) MessageBox(0,"NoWindow","",0);
 
-functionEdit=CreateWindow("EDIT","x",WS_BORDER | WS_CHILD,0,0,width,heigh/20,window,0,hInstance,0);
+functionEdit=CreateWindow("EDIT","sqrt(1-x^2)",WS_BORDER | WS_CHILD,0,0,width,heigh/20,window,0,hInstance,0);
 coord=CreateWindow("STATIC","x;y",WS_CHILD,width*(2.0/3.0),heigh/20,width/3,heigh/20,window,0,hInstance,0);
 
 font=CreateFont(heigh/20-2, heigh/40,0,0,4,0,0,0,0,0,0,0,5,0);
@@ -50,7 +50,7 @@ BOOL bRet;
 SetCursor(curs);
 
 TClear();
-Tparse("x\0");
+Tparse("sqrt(1-x^2)\0");
 Tsort();
 TinitTree();
 

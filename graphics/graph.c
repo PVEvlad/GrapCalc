@@ -13,6 +13,7 @@ double Xmax,Xmin,Ymax,Ymin;
 unsigned int width,heigh;
 BITMAPINFOHEADER BMIH;
 BITMAPINFO BMI={0,0};
+struct _exception Except;
 
 void GRinit()
 {
@@ -108,18 +109,22 @@ switch(side)
 //printf("Ymax=%Lf Ymin=%Lf Xmax=%Lf Xmin=%Lf\n",Ymax,Ymin,Xmax,Xmin);
 }
 
-_Bool flag=1;
+_Bool flag=0;
 void GRline()
 {
   double step = (Xmax-Xmin)/(double)width;
   double stepY=(Ymax-Ymin)/(double)heigh;
   double prevY=0x0, curY;
-for(double curX=Xmin;curX<=Xmax;curX+=step)
+for(double curX=Xmin;curX<=Xmax;curX+=step/100)
 {
+
   curY=Tcalculate(curX, top);
+if(curY>Ymax || isinf(curY))curY=Ymax;
+if(curY<Ymin)curY=Ymin;
+
   testfunc(curX,curY,0xFF,0,0,1); 
 //printf("%lf %lf\n",abs(prevY-curY),abs(Ymax-Ymin));
-if(prevY && fabs(prevY-curY)<fabs(Ymax-Ymin))
+if(1)
 {
   
   if(prevY<curY)while(prevY<curY){ testfunc(curX,prevY,0xFF,0,0,1);prevY+=stepY;}
@@ -128,39 +133,13 @@ if(prevY && fabs(prevY-curY)<fabs(Ymax-Ymin))
   prevY=curY;
 }
 }
-/*
-void GRsetPix(double X,double Y,byte R, byte G, byte B, byte mod)
+
+int _matherr(struct _exception *except)
 {
- unsigned int xpix=width/((Xmax-X)/(X-Xmin)+1);
- unsigned int ypix=heigh/((Ymax-Y)/(Y-Ymin)+1);
- unsigned int tekpix=(ypix*width+xpix)*3;
- if(ypix>=heigh || xpix>=width)return;
-
-  colors[tekpix]=B;
-  colors[tekpix+1]=G;
-  colors[tekpix+2]=R;
-if(mod)
-  {
-  if((ypix>1) && ypix<(heigh-1))
+    /* Handle _DOMAIN errors for log or log10. */
+    if (except->type == _DOMAIN)
     {
-      colors[tekpix+width*3+2]=R;
-      colors[tekpix+width*3+1]=G;
-      colors[tekpix+width*3]  =B;
-
-      colors[tekpix-width*3+2]=R;
-      colors[tekpix-width*3+1]=G;
-      colors[tekpix-width*3]  =B;
+       printf("check\n");
     }
-  if((xpix>1) && xpix<(width-1))
-    {
-      colors[tekpix+3+2]=R;
-      colors[tekpix+3+1]=G;
-      colors[tekpix+3]  =B;
-
-      colors[tekpix-3+2]=R;
-      colors[tekpix-3+1]=G;
-      colors[tekpix-3]  =B;
-    }
-  }
-  else;
-}*/
+    return 0;    /* Else use the default actions */
+}
