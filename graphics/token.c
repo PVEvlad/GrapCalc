@@ -261,10 +261,6 @@ void Tsort()
 
 void TinitTree()
 {
-    printf("\n");
-    for (int i = 0; i < Tokens; i++)if(buffer[i])printf ("%d ",buffer[i]->type);
-    printf("\n");
-    for (int i = 0; i < Tokens; i++)if(final[i])printf ("%d ",final[i]->type);
     top = malloc(sizeof(struct BinParce));
     memset(top,0, sizeof(struct BinParce));
     top->this = final[stackpointer];
