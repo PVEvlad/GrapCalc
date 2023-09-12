@@ -230,11 +230,11 @@ void Tsort()
         {
         case TOKEN_PLUS:case TOKEN_MINUS:       priority = 1; break;
         case TOKEN_MULTIPLY: case TOKEN_DIVIDE: priority = 2; break;
-        case TOKEN_POWER:                       priority = 3; break;
+        case TOKEN_POWER:                       priority = 5; break;
         case TOKEN_SIN:case TOKEN_COS:case TOKEN_TG:case TOKEN_CTG:case TOKEN_ARCSIN:case TOKEN_ARCCOS:
         case TOKEN_ARCTG:case TOKEN_ARCCTG:case TOKEN_LG:case TOKEN_LN:case TOKEN_SQRT:
-            priority = 3; break;
-        case TOKEN_UNARMINUS: priority = 5; break;
+            priority = 5; break;
+        case TOKEN_UNARMINUS: priority = 4; break;
         }
 
         if (bottom)
