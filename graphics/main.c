@@ -39,7 +39,7 @@ SendMessage(functionEdit, WM_SETFONT, font, 0);
 ShowWindow(coord,5);
 ShowWindow(functionEdit,5);
 ShowWindow(window,5);
-SetTimer(window,0x0100,15,KeyProc);
+SetTimer(window,0x0100,30,KeyProc);
 
 oldEdit=SetWindowLongPtr(functionEdit,GWLP_WNDPROC,SubEditProc);
 //SetWindowSubclass(functionEdit,SubEditProc,0x1524,0);

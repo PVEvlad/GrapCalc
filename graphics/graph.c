@@ -97,7 +97,7 @@ if(Ymin<=0 && Ymax>=0)
 
 void GRmove(byte side)
 {
-   double step=(Xmax-Xmin)/1000.0;
+   double step=(Xmax-Xmin)/100.0;
 switch(side)
 {
   case 0:Ymax+=step;Ymin+=step;break;
@@ -115,7 +115,7 @@ void GRline()
   double step = (Xmax-Xmin)/(double)width;
   double stepY=(Ymax-Ymin)/(double)heigh;
   double prevY=0x0, curY;
-for(double curX=Xmin;curX<=Xmax;curX+=step/100)
+for(double curX=Xmin;curX<=Xmax;curX+=step/80)
 {
 
   curY=Tcalculate(curX, top);
@@ -124,7 +124,7 @@ if(curY<Ymin)curY=Ymin;
 
   testfunc(curX,curY,0xFF,0,0,1); 
 //printf("%lf %lf\n",abs(prevY-curY),abs(Ymax-Ymin));
-if(1)
+if((curY<Ymax && curY>Ymin ) || (prevY<Ymax && prevY>Ymin))
 {
   
   if(prevY<curY)while(prevY<curY){ testfunc(curX,prevY,0xFF,0,0,1);prevY+=stepY;}
