@@ -57,12 +57,11 @@ void GRfillMap()
 {
  double x,y;
 unsigned int xpix,ypix;
- double step = 0.5;
+ double step = 1.0;
  memset(colors,0xEEEEEE,width*3*heigh);
 
-y=Ymin,x=Xmin;
+y=round(Ymin)+1.0,x=round(Xmin)+1.0;
 double step1 = (Xmax-Xmin)/(double)width;
-
 while(y<Ymax)
 {
     for(double X = Xmin+step1; X < Xmax; X+=step1)
@@ -74,7 +73,7 @@ step1 = (Ymax-Ymin)/(double)heigh;
 while(x<Xmax)
 {
     for(double Y = Ymin+step1; Y < Ymax; Y+=step1)
-      testfunc(x,Y,0xBB, 0xBB, 0xBB, 0);
+      {testfunc(x,Y,0xBB, 0xBB, 0xBB, 0);}
     x+=step;
 }
 
@@ -106,7 +105,6 @@ switch(side)
   case 3:Xmax-=step;Xmin-=step;break;break;
 }
 
-//printf("Ymax=%Lf Ymin=%Lf Xmax=%Lf Xmin=%Lf\n",Ymax,Ymin,Xmax,Xmin);
 }
 
 _Bool flag=0;
@@ -115,7 +113,7 @@ void GRline()
   double step = (Xmax-Xmin)/(double)width;
   double stepY=(Ymax-Ymin)/(double)heigh;
   double prevY=0x0, curY;
-for(double curX=Xmin;curX<=Xmax;curX+=step/80)
+for(double curX=Xmin;curX<=Xmax;curX+=step/300)
 {
 
   curY=Tcalculate(curX, top);
@@ -132,14 +130,4 @@ if((curY<Ymax && curY>Ymin ) || (prevY<Ymax && prevY>Ymin))
 }
   prevY=curY;
 }
-}
-
-int _matherr(struct _exception *except)
-{
-    /* Handle _DOMAIN errors for log or log10. */
-    if (except->type == _DOMAIN)
-    {
-       printf("check\n");
-    }
-    return 0;    /* Else use the default actions */
 }
