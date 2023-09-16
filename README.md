@@ -6,3 +6,5 @@
 Числа: e, pi, x, *обычные числа*
 Бинарные: + - * / ^
 Унарные: - ln lg sin cos tg ctg arccos arcsin arctg arcctg sqrt
+Для компилляции нужны gcc и fasm.
+Запускать для сборки main.bat
