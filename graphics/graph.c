@@ -60,21 +60,21 @@ unsigned int xpix,ypix;
  double step = 1.0;
  memset(colors,0xEEEEEE,width*3*heigh);
 
-y=round(Ymin)+1.0,x=round(Xmin)+1.0;
+y=round(Ymax),x=round(Xmax);
 double step1 = (Xmax-Xmin)/(double)width;
-while(y<Ymax)
+while(y>Ymin)
 {
-    for(double X = Xmin+step1; X < Xmax; X+=step1)
+    for(double X = Xmin; X < Xmax; X+=step1)
       testfunc(X,y,0xBB, 0xBB, 0xBB, 0);
-    y+=step;
+    y-=step;
 }
 
-step1 = (Ymax-Ymin)/(double)heigh;
-while(x<Xmax)
+while(x>=(Xmin))
 {
-    for(double Y = Ymin+step1; Y < Ymax; Y+=step1)
-      {testfunc(x,Y,0xBB, 0xBB, 0xBB, 0);}
-    x+=step;
+    for(double Y = Ymin; Y < Ymax; Y+=step1)
+      if(x>Xmax);
+      else{testfunc(x,Y,0xBB, 0xBB, 0xBB, 0);}
+    x-=step;
 }
 
 if(Xmin<=0 && Xmax>=0)
