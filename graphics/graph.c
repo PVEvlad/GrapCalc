@@ -122,7 +122,7 @@ if(curY<Ymin)curY=Ymin;
 
   testfunc(curX,curY,0xFF,0,0,1); 
 //printf("%lf %lf\n",abs(prevY-curY),abs(Ymax-Ymin));
-if((curY<Ymax && curY>Ymin ) || (prevY<Ymax && prevY>Ymin))
+if(((curY<Ymax && curY>Ymin ) || (prevY<Ymax && prevY>Ymin)) && abs(curY-prevY)>=abs(stepY))
 {
   
   if(prevY<curY)while(prevY<curY){ testfunc(curX,prevY,0xFF,0,0,1);prevY+=stepY;}
