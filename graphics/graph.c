@@ -113,7 +113,7 @@ void GRline()
   double step = (Xmax-Xmin)/(double)width;
   double stepY=(Ymax-Ymin)/(double)heigh;
   double prevY=0x0, curY;
-for(double curX=Xmin;curX<=Xmax;curX+=step/300)
+for(double curX=Xmin;curX<=Xmax;curX+=step/50)
 {
 
   curY=Tcalculate(curX, top);
@@ -122,7 +122,7 @@ if(curY<Ymin)curY=Ymin;
 
   testfunc(curX,curY,0xFF,0,0,1); 
 //printf("%lf %lf\n",abs(prevY-curY),abs(Ymax-Ymin));
-if(((curY<Ymax && curY>Ymin ) || (prevY<Ymax && prevY>Ymin)) && abs(curY-prevY)>=abs(stepY))
+if(abs(curY-prevY)>=abs(stepY))
 {
   
   if(prevY<curY)while(prevY<curY){ testfunc(curX,prevY,0xFF,0,0,1);prevY+=stepY;}
