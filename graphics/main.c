@@ -18,6 +18,7 @@ LRESULT (*oldEdit)(HWND,UINT,WPARAM,LPARAM);
 
 int WINAPI WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPSTR lpCmdLine,int nCmdShow)
 {
+FreeConsole();
 GRinit();
 memset(function,'\0',512);
 mywin.hInstance=hInstance;
