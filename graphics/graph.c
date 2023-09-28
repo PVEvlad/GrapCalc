@@ -5,7 +5,9 @@ extern int GetSystemMetrics(int);
 extern void *malloc(int);
 extern struct BinParce *top;
 extern HDC hdc;
+extern HWND window;
 extern void testfunc(double,double,byte,byte,byte,byte);
+
 
 byte* colors;
 byte* points;
@@ -102,9 +104,9 @@ switch(side)
   case 0:Ymax+=step;Ymin+=step;break;
   case 1:Xmax+=step;Xmin+=step;break;
   case 2:Ymax-=step;Ymin-=step;break;
-  case 3:Xmax-=step;Xmin-=step;break;break;
+  case 3:Xmax-=step;Xmin-=step;break;
 }
-
+InvalidateRect(window,0,0);
 }
 
 _Bool flag=0;
@@ -113,7 +115,7 @@ void GRline()
   double step = (Xmax-Xmin)/(double)width;
   double stepY=(Ymax-Ymin)/(double)heigh;
   double prevY=0x0, curY;
-for(double curX=Xmin;curX<=Xmax;curX+=step/50)
+for(double curX=Xmin;curX<=Xmax;curX+=step/200)
 {
 
   curY=Tcalculate(curX, top);
@@ -122,7 +124,7 @@ if(curY<Ymin)curY=Ymin;
 
   testfunc(curX,curY,0xFF,0,0,1); 
 //printf("%lf %lf\n",abs(prevY-curY),abs(Ymax-Ymin));
-if(abs(curY-prevY)>=abs(stepY) &&(curY>Ymin && curY<Ymax))
+if(abs(curY-prevY)>=abs(stepY) &&((curY>Ymin && curY<Ymax)||(prevY>Ymin && prevY<Ymax)))
 {
   
   if(prevY<curY)while(prevY<curY){ testfunc(curX,prevY,0xFF,0,0,1);prevY+=stepY;}

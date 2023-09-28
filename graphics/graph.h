@@ -1,14 +1,14 @@
 //#include "C:\gcc\x86_64-w64-mingw32\include\GL\glut.h"
 #include "token.h"
-
 typedef unsigned char byte;
 typedef byte BYTE;
 typedef unsigned long DWORD;
 typedef long LONG;
 typedef unsigned short WORD;
 typedef void *PVOID;
-typedef PVOID HANDLE;
+typedef void *HANDLE;
 typedef HANDLE HDC;
+typedef PVOID HWND;
 typedef struct tagRGBQUAD {
   BYTE    rgbBlue; 
   BYTE    rgbGreen; 

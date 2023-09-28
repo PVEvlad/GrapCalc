@@ -1,6 +1,5 @@
 #include "main.h"
 
-
 WNDCLASS mywin={0,WindowProc,0,0,0,0,0,0,0,"mywin"};
 HDC hdc;
 HWND window, functionEdit, coord;
@@ -12,7 +11,7 @@ char function[512];
 extern int width,heigh;
 extern int error;
 extern double Xmin,Ymin,Xmax,Ymax;
-
+extern void GRmove(byte);
 
 LRESULT (*oldEdit)(HWND,UINT,WPARAM,LPARAM);
 
@@ -108,7 +107,7 @@ DWORD WINAPI KeyProc(LPVOID lpParameter)
         if(left){GRmove(3);keyboard[VK_LEFT]=1;} 
         if(right){GRmove(1);keyboard[VK_RIGHT]=1;} 
         //if(keyboard[VK_ENTER]){}
-        InvalidateRect(window,0,0);
+        //InvalidateRect(window,0,0);
 }
 
 LRESULT CALLBACK SubEditProc(HWND hwnd,UINT uMsg,WPARAM wParam,LPARAM lParam)
@@ -138,6 +137,7 @@ if(error)
 Tsort();
 TinitTree();
 SetFocus(window);
+InvalidateRect(window,0,0);
     break; } break;
 }
 return oldEdit(hwnd,uMsg,wParam,lParam);//DefSubclassProc(hwnd, uMsg, wParam, lParam);
