@@ -115,7 +115,7 @@ void GRline()
   double step = (Xmax-Xmin)/(double)width;
   double stepY=(Ymax-Ymin)/(double)heigh;
   double prevY=0x0, curY;
-for(double curX=Xmin;curX<=Xmax;curX+=step/200)
+for(double curX=Xmin;curX<=Xmax;curX+=step/100)
 {
 
   curY=Tcalculate(curX, top);

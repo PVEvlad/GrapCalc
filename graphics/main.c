@@ -86,7 +86,7 @@ int par=0;
         case WM_MOUSEWHEEL:
             if(((signed short)HIWORD(wParam))>0) GRscale(0);
             else GRscale(1);
-	     InvalidateRect(window,0,0);
+            InvalidateRect(window,0,0);
              break;
         case WM_DESTROY:DeleteObject(font); PostQuitMessage(0); break;
         case WM_KEYDOWN: keyboard[wParam]=1; break;
