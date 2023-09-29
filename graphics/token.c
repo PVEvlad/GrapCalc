@@ -1,7 +1,11 @@
 #define _USE_MATH_DEFINES
 #include "token.h"
 #include "help.h"
+
 extern int error;
+extern double asmsin(double);
+extern double asmcos(double);
+
 int printf(const char* format, ...);
 
 struct TOKEN* head=0;
@@ -150,8 +154,8 @@ double Tcalculate(double X, struct BinParce* current)
     case TOKEN_MULTIPLY:return Tcalculate(X, current->left) * Tcalculate(X, current->right);
     case TOKEN_DIVIDE:return Tcalculate(X, current->left) / Tcalculate(X, current->right);
     case TOKEN_POWER:return pow(Tcalculate(X, current->left), Tcalculate(X, current->right));
-    case TOKEN_SIN:return sin(Tcalculate(X, current->right));
-    case TOKEN_COS:return cos(Tcalculate(X, current->right));
+    case TOKEN_SIN:return asmsin(Tcalculate(X, current->right));
+    case TOKEN_COS:return asmcos(Tcalculate(X, current->right));
     case TOKEN_TG:return tan(Tcalculate(X, current->right));
     case TOKEN_CTG:return 1.0 / tan(Tcalculate(X, current->right));
     case TOKEN_ARCSIN:return asin(Tcalculate(X, current->right));

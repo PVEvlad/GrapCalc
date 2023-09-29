@@ -25,7 +25,7 @@ mywin.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
 
 
 if(!RegisterClass(&mywin))MessageBox(0,"NoClass","",0);
-window=CreateWindow("mywin","WindowA",WS_OVERLAPPEDWINDOW | WS_MAXIMIZE | WS_CLIPCHILDREN,0,0,width,heigh,0,0,hInstance,0);
+window=CreateWindow("mywin","WindowB",WS_OVERLAPPEDWINDOW | WS_MAXIMIZE | WS_CLIPCHILDREN,0,0,width,heigh,0,0,hInstance,0);
 
 if(!window) MessageBox(0,"NoWindow","",0);
 

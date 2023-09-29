@@ -1,5 +1,7 @@
 format MS64 COFF
 public testingfunction as 'testfunc'
+public asmsinus as 'asmsin'
+public asmcosinus as 'asmcos'
 extrn width
 extrn heigh 
 extrn colors
@@ -122,4 +124,28 @@ mov ebx,[rsp+48]
 mov byte[rcx+2],bl
 
 ending:pop rbp
+ret
+
+asmsinus:
+push rbp
+mov rbp,rsp
+movq [rbp-8],xmm0
+fld qword[rbp-8]
+fsin
+fstp qword[rbp-8]
+movq xmm0,qword[rbp-8]
+
+pop rbp
+ret
+
+asmcosinus:
+push rbp
+mov rbp,rsp
+movq [rbp-8],xmm0
+fld qword[rbp-8]
+fcos
+fstp qword[rbp-8]
+movq xmm0,qword[rbp-8]
+
+pop rbp
 ret
