@@ -4,7 +4,6 @@ WNDCLASS mywin={0,WindowProc,0,0,0,0,0,0,0,"mywin"};
 HDC hdc;
 HWND window, functionEdit, coord;
 HFONT font;
-HPEN pen;
 HCURSOR curs;
 BYTE keyboard[256];
 char function[512];
