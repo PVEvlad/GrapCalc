@@ -1,8 +1,7 @@
 #include "graph.h"
 extern double fabs(double);
 extern int printf(char*,...);
-extern int GetSystemMetrics(int);
-extern void *malloc(int);
+extern void *malloc(long long unsigned int);
 extern struct BinParce *top;
 extern HDC hdc;
 extern HWND window;

@@ -1,6 +1,6 @@
 #include <math.h>
 #include <string.h>
-
+#include <windows.h>
 enum typeTok
 {
     TOKEN_PLUS, TOKEN_MINUS, TOKEN_MULTIPLY, TOKEN_DIVIDE, TOKEN_POWER, TOKEN_SIN,
